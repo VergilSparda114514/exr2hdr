@@ -1,0 +1,3 @@
+[submodule "vendor/openexr"]
+	path = vendor/openexr
+	url = https://github.com/AcademySoftwareFoundation/openexr.git
