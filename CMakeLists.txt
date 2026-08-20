@@ -5,14 +5,11 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 
-include(vendor/openexr/cmake/OpenEXRConfig.h)
+include_directories(/opt/homebrew/Cellar/openexr/3.4.14/include)
 
-include_directories(vendor/openexr/src/lib)
-
-add_subdirectory(vendor/openexr)
+find_package(OpenEXR REQUIRED)
 
 file(GLOB_RECURSE PROJECT_SOURCE CONFIGURE_DEPENDENT ${CMAKE_SOURCE_DIR}/src/*.cpp)
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCE})
-
-target_link_directories(${PROJECT_NAME} PRIVATE OpenEXR)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenEXR::OpenEXR)

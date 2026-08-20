@@ -26,15 +26,22 @@ int main()
 
     file.readPixels(dw.min.y, dw.max.y);
 
-    // Raw pixel bytes:
-    const std::byte* bytes =
-        reinterpret_cast<const std::byte*>(&pixels[0][0]);
+    std::vector<float> data(width * height * 4);
 
-    size_t byteCount =
-        static_cast<size_t>(width) *
-        height *
-        sizeof(Imf::Rgba);
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            const auto& p = pixels[y][x];
 
-    std::cout << width << " x " << height << '\n';
-    std::cout << "Bytes: " << byteCount << '\n';
+            const size_t i = (y * width + x) * 4;
+
+            data[i + 0] = p.r;
+            data[i + 1] = p.g;
+            data[i + 2] = p.b;
+            data[i + 3] = p.a;
+        }
+    }
+
+    std::cout << width << "x" << height << '\n';
 }
