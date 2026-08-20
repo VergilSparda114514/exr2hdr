@@ -4,9 +4,18 @@
 #include <vector>
 #include <cstring>
 
-int main()
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb_image_write.h>
+
+int main(int argc, const char *argv[])
 {
-    const char* filename = "image.exr";
+    if (argc < 3)
+    {
+        std::cerr << "Usage: exr2hdr [input] [output]" << std::endl;
+        return 0;
+    }
+
+    const char* filename = argv[1];
 
     Imf::RgbaInputFile file(filename);
 
@@ -34,7 +43,7 @@ int main()
         {
             const auto& p = pixels[y][x];
 
-            const size_t i = (y * width + x) * 4;
+            const size_t i = (x + y * width) * 4;
 
             data[i + 0] = p.r;
             data[i + 1] = p.g;
@@ -43,5 +52,5 @@ int main()
         }
     }
 
-    std::cout << width << "x" << height << '\n';
+    stbi_write_hdr(argv[2], width, height, 4, data.data());
 }
