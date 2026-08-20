@@ -12,8 +12,11 @@ int main(int argc, const char *argv[])
     if (argc < 3)
     {
         std::cerr << "Usage: exr2hdr [input] [output]" << std::endl;
+
         return 0;
     }
+
+    // Read
 
     const char* filename = argv[1];
 
@@ -34,6 +37,8 @@ int main(int argc, const char *argv[])
     );
 
     file.readPixels(dw.min.y, dw.max.y);
+
+    // Write
 
     std::vector<float> data(width * height * 4);
 
