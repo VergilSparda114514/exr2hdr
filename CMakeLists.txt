@@ -5,10 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 
-include_directories(
-    /opt/homebrew/Cellar/openexr/3.4.14/include
-    vendor/stb_image
-)
+include_directories(vendor/stb_image)
 
 find_package(OpenEXR REQUIRED)
 
