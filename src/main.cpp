@@ -1,11 +1,11 @@
 #include <OpenEXR/ImfRgbaFile.h>
 #include <OpenEXR/ImfArray.h>
-#include <iostream>
-#include <vector>
-#include <cstring>
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb_image_write.h>
+
+#include <iostream>
+#include <vector>
 
 int main(int argc, const char *argv[])
 {
