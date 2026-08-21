@@ -9,7 +9,7 @@
 
 int main(int argc, const char *argv[])
 {
-    if (argc < 3)
+    if (argc != 3)
     {
         std::cerr << "Usage: exr2hdr [input] [output]" << std::endl;
 
